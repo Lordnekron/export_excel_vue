@@ -75,6 +75,15 @@ button:focus-visible {
   text-align: center;
 }
 
+.ant-list {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.ant-checkbox-wrapper {
+  margin-bottom: 10px;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

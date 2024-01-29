@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h2>Export Button Component</h2>
     <a-button type="primary" @click="exportToExcel">Export to Excel</a-button>
   </div>
 </template>

@@ -6,13 +6,7 @@
 </template>
 
 <script setup>
-import DataDisplay from "./components/DataDisplay.vue";
 import Modal from "./components/Modal.vue";
-
-const components = {
-  DataDisplay,
-  Modal,
-};
 
 const d = {
   title: "Филиалы",
@@ -27,6 +21,22 @@ const d = {
     },
     {
       title: "Предприятие",
+      dataIndex: "company_id",
+      sorter: true,
+      minWidth: 100,
+      width: "40%",
+      filterType: "text",
+    },
+    {
+      title: "элемент 1",
+      dataIndex: "company_id",
+      sorter: true,
+      minWidth: 100,
+      width: "40%",
+      filterType: "text",
+    },
+    {
+      title: "элеент 2",
       dataIndex: "company_id",
       sorter: true,
       minWidth: 100,

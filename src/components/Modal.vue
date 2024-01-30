@@ -2,7 +2,7 @@
   <div>
     <a-button type="primary" @click="showModal">Open Modal</a-button>
     <a-modal v-model:open="open" title="Basic Modal" @ok="handleOk">
-      <DataDisplay :data="data" />
+      <DataDisplay :columns="columns" :data="data" />
     </a-modal>
   </div>
 </template>
@@ -13,7 +13,7 @@ import { ref, defineProps } from "vue";
 
 const open = ref(false);
 
-const props = defineProps(["data"]);
+const props = defineProps(["columns", "data"]);
 
 const showModal = () => {
   open.value = true;

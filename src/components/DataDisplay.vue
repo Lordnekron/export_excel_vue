@@ -8,7 +8,6 @@
     >
       Check all
     </a-checkbox>
-
     <a-checkbox-group v-model:value="state.checkedList" style="width: 100%">
       <a-list size="small" bordered :data-source="columns">
         <template #renderItem="{ item, index }">
@@ -20,25 +19,31 @@
         </template>
       </a-list>
     </a-checkbox-group>
+    <ExportButton
+      :columns="props.columns"
+      :checked="state.checkedList"
+      :data="props.data"
+    />
   </div>
-  <ExportButton :data="data" />
 </template>
 
 <script setup>
 import { ref, defineProps, reactive, watch } from "vue";
 import ExportButton from "./ExportButton.vue";
 const checked = ref(false);
-const props = defineProps(["data"]);
+const checkElement = [];
+const props = defineProps(["columns", "data"]);
 let columns = [];
-for (const item of props.data) {
+for (const item of props.columns) {
   columns.push(item.title);
 }
-console.log(columns);
+
 const plainOptions = columns;
 
 const state = reactive({
   indeterminate: false,
   checkAll: false,
+  checkedList: checkElement,
 });
 
 const onCheckAllChange = (e) => {

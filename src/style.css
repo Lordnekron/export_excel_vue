@@ -80,6 +80,11 @@ button:focus-visible {
   margin-bottom: 10px;
 }
 
+.ant-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .ant-checkbox-wrapper {
   margin-bottom: 10px;
 }

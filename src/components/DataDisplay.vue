@@ -1,14 +1,17 @@
 <template>
   <div>
-    <h2>Data Display Component</h2>
     <a-checkbox
       v-model:checked="state.checkAll"
       :indeterminate="state.indeterminate"
       @change="onCheckAllChange"
     >
-      Check all
+      Выделить всё
     </a-checkbox>
-    <a-checkbox-group v-model:value="state.checkedList" style="width: 100%">
+    <a-checkbox-group
+      v-model:value="state.checkedList"
+      @change="doCheck"
+      style="width: 100%"
+    >
       <a-list size="small" bordered :data-source="columns">
         <template #renderItem="{ item, index }">
           <a-list-item>
@@ -19,20 +22,17 @@
         </template>
       </a-list>
     </a-checkbox-group>
-    <ExportButton
-      :columns="props.columns"
-      :checked="state.checkedList"
-      :data="props.data"
-    />
   </div>
 </template>
 
 <script setup>
-import { ref, defineProps, reactive, watch } from "vue";
+import { ref, defineProps, reactive, watch, defineEmits } from "vue";
 import ExportButton from "./ExportButton.vue";
 const checked = ref(false);
 const checkElement = [];
-const props = defineProps(["columns", "data"]);
+const props = defineProps(["columns", "data", "title"]);
+const emit = defineEmits(["onCheckedList"]);
+
 let columns = [];
 for (const item of props.columns) {
   columns.push(item.title);
@@ -46,11 +46,16 @@ const state = reactive({
   checkedList: checkElement,
 });
 
+const doCheck = () => {
+  emit("onCheckedList", state.checkedList);
+};
+
 const onCheckAllChange = (e) => {
   Object.assign(state, {
     checkedList: e.target.checked ? plainOptions : [],
     indeterminate: false,
   });
+  emit("onCheckedList", state.checkedList);
 };
 watch(
   () => state.checkedList,

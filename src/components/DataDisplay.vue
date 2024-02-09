@@ -27,7 +27,6 @@
 
 <script setup>
 import { ref, defineProps, reactive, watch, defineEmits } from "vue";
-import ExportButton from "./ExportButton.vue";
 const checked = ref(false);
 const checkElement = [];
 const props = defineProps(["columns", "data", "title"]);

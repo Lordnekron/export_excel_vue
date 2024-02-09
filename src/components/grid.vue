@@ -1,4 +1,8 @@
-<script>
+<template>
+  
+</template>
+
+<script setup>
 const d = {
   items: [
     {
